@@ -15,7 +15,7 @@ start_service() {
 	hostname=$(config_get zabbix_agentd  Hostname)
 	startagent=$(config_get zabbix_agentd StartAgents)
 	server=$(config_get zabbix_agentd  Server)
-	ACTserver=$(config_get zabbix_agentd  ActiveServer)
+	ACTserver=$(config_get zabbix_agentd  ServerActive)
 	include=$(config_get zabbix_agentd Include)  
 	logfile=$(config_get zabbix_agentd LogFile)
 	if [ $allowroot ]; then echo "AllowRoot=$allowroot" > $CONFIG; fi
@@ -23,7 +23,7 @@ start_service() {
 	if [ $hostname ]; then echo "Hostname=$hostname" >> $CONFIG; fi
 	if [ $startagent ]; then echo "StartAgents=$startagent" >> $CONFIG; fi
 	if [ $server ]; then echo "Server=$server" >> $CONFIG; fi
-	if [ $ACTserver ]; then echo "ActiveServer=$ACTserver" >> $CONFIG; fi
+	if [ $ACTserver ]; then echo "ServerActive=$ACTserver" >> $CONFIG; fi
 	if [ $include ]; then echo "Include=$include" >> $CONFIG; fi
 	if [ $logfile ]; then echo "LogFile=$logfile" >> $CONFIG; fi
 	procd_open_instance
